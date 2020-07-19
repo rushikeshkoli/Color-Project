@@ -52,9 +52,18 @@
     left: 0px;
     bottom: 0px;
     padding: 10px;
+    color:black;
     letter-spacing: 1px;
     font-size: 12px;
     text-transform: uppercase;
+}
+
+.light-text {
+    color: white;
+}
+
+.ColorBox .dark-text {
+    color: rgba(0, 0, 0, 0.5)
 }
 
 .see-more {
