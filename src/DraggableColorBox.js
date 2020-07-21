@@ -14,7 +14,7 @@ const styles = {
 
 function DragableColorBox(props) {
     return (
-        <li className={props.classes.root} style={{backgroundColor: props.color}}>{props.color}</li>
+        <li className={props.classes.root} style={{backgroundColor: props.color}}>{props.name}</li>
     )
 }
 
