@@ -8,8 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Button from "@material-ui/core/Button";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import { Link } from "react-router-dom";
+import PaletteMetaForm from './PaletteMetaForm';
 
 const drawerWidth = 400;
 const styles = (theme) => ({
@@ -46,23 +46,10 @@ class PaletteFormNav extends Component {
     this.state = {
       newPaletteName: "",
     };
-    this.handleChange = this.handleChange.bind(this);
-  }
-  componentDidMount() {
-    ValidatorForm.addValidationRule("isPaletteNameUnique", (value) =>
-      this.props.palettes.every(
-        ({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase()
-      )
-    );
-  }
-
-  handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
-    const { classes, open } = this.props;
-    const { newPaletteName } = this.state;
+    const { classes, open, palettes, handleSubmit } = this.props;
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -87,21 +74,10 @@ class PaletteFormNav extends Component {
             </Typography>
           </Toolbar>
           <div className={classes.navBtns}>
-            <ValidatorForm
-              onSubmit={() => this.props.handleSubmit(newPaletteName)}
-            >
-              <TextValidator
-                label="new pal"
-                value={newPaletteName}
-                name="newPaletteName"
-                onChange={this.handleChange}
-                validators={["required", "isPaletteNameUnique"]}
-                errorMessages={["this field is required", "Palette Name used"]}
-              />
-              <Button variant="contained" type="submit" color="primary">
-                Save Palette
-              </Button>
-            </ValidatorForm>
+            <PaletteMetaForm 
+              palettes={palettes}
+              handleSubmit={handleSubmit}
+            />
             <Link to="/">
               <Button variant="contained" color="secondary">
                 Go Back
