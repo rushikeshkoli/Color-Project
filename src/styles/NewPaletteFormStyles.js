@@ -4,6 +4,7 @@ const drawerWidth = DRAWER_WIDTH;
 const styles = (theme) => ({
   root: {
     display: "flex",
+    // width: "100vh",
   },
 
   drawer: {
